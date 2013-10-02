@@ -46,3 +46,15 @@ bindkey '^[[5C' end-of-line
 bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
+
+
+# My own custom stuff down here...
+# custom history stuff
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
+setopt hist_ignore_all_dups
+
+# Use less as the default pager, and -X to stop clearing on exit in 
+# an xterm i.e. makes it nice for GNUplot help! The -M gives more 
+# verbose info.
+PAGER='less -X -M'

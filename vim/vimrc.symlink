@@ -83,3 +83,21 @@ function! StripWhitespace ()
     exec ':%s/ \+$//gc'
 endfunction
 map ,s :call StripWhitespace ()<CR>
+
+
+" mine...
+if &t_Co > 1
+   syntax enable
+   endif
+
+set nocompatible
+set expandtab
+
+syntax on
+filetype on
+filetype indent on
+filetype plugin on
+compiler ruby
+
+"execute pathogen#infect()
+autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
