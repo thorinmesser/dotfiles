@@ -4,6 +4,7 @@ alias viz='vi ~/.zshrc'
 
 alias pf='open -a /Applications/Path\ Finder.app'
 alias st='open -a /Applications/Sublime\ Text.app'
+alias atm='open -a /Applications/Atom.app'
 alias path='echo $PATH'
 alias biggs='pushd /usr/local/src/biggs'
 alias uls='cd /usr/local/src'
