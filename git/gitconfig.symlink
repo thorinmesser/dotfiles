@@ -1,22 +1,42 @@
 [core]
     excludesfile = ~/.gitignore
+#	editor = atom --wait
 
 [user]
-        name = Thorin Messer
-        email = github@thorinmesser.com
+    name = Thorin Messer
+    email = github@thorinmesser.com
 [color]
-        diff = auto
-        status = auto
-        branch = auto
-        ui = true
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
 [alias]
-        co = checkout
-        cm = commit
-        br = branch
+    co = checkout
+    cm = commit
+    br = branch
+    df = difftool
+    mg = mergetool
+    tree = log --decorate --oneline --all --graph
+    newsvn = log -p --reverse --ignore-all-space --patience master..git-svn
 [github]
-        user = thorinmesser
-        token = 43d1f0209cb75b12d49295fc35b01d44
+    user = thorinmesser
+    token = 43d1f0209cb75b12d49295fc35b01d44
+[log]
+    date = local
 [merge]
-        tool = vimdiff
+	tool = p4mergetool
 [push]
-        default = simple
+    default = simple
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[mergetool "p4mergetool"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
+	trustExitCode = false
+[mergetool]
+	keepBackup = false
+    prompt = false
+[diff]
+	tool = p4mergetool
+[difftool "p4mergetool"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE

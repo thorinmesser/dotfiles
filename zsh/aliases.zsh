@@ -8,6 +8,6 @@ alias atm='open -a /Applications/Atom.app'
 alias path='echo $PATH'
 alias biggs='pushd /usr/local/src/biggs'
 alias uls='cd /usr/local/src'
-alias bd=". bd -s"
+# alias bd=". bd -s"
 alias ruby='nocorrect ruby'
 alias vi='nocorrect vi'
