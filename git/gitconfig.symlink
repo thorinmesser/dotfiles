@@ -1,10 +1,11 @@
 [core]
-    excludesfile = ~/.gitignore
+	excludesfile = /Users/jmesser/.gitignore
+	pager = diff-so-fancy | less --tabs=4 -RFX
 #	editor = atom --wait
 
 [user]
     name = Thorin Messer
-    email = github@thorinmesser.com
+	email = thorin.messer@vml.com
 [color]
     diff = auto
     status = auto
@@ -18,6 +19,11 @@
     mg = mergetool
     tree = log --decorate --oneline --all --graph
     newsvn = log -p --reverse --ignore-all-space --patience master..git-svn
+    changed = !git diff --name-only $1@{1}..$1 --dirstat=cumulative,files
+    rdiff = !git diff --name-only HEAD..
+    alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+    p = fetch --prune
+    pod = pull origin develop
 [github]
     user = thorinmesser
     token = 43d1f0209cb75b12d49295fc35b01d44
@@ -40,3 +46,17 @@
 	tool = p4mergetool
 [difftool "p4mergetool"]
 	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[pull]
+	rebase = true
+[credential]
+[credential]
+	helper = !/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /usr/local/bin/git-credential-manager-1.5.0.jar
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22

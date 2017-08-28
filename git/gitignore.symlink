@@ -1,3 +1,5 @@
+# mine
+*.map
 test_log
 pkg
 pkg/*
@@ -10,6 +12,10 @@ log/*
 coverage
 .DS_Store
 *.pid#
+node_modules
+*.vlt
+target
+
 # Here are some examples of what you might want to ignore
 # in your git-home-history.  Feel free to modify.
 #
@@ -54,8 +60,8 @@ coverage
 ##!/.vimrc
 
 # We do not want to track the tracking of other files:
-#.svn
-#CVS
+.svn
+CVS
 # Please note that all files in a Git project are ignored
 # e.g. linux-2.6/ will be entirely ignored if linux-2.6/.git exists.
 # Thus it is not necessary to add ".git" here.
@@ -63,4 +69,3 @@ coverage
 # Some editors use some special backup file formats.  Ignore them:
 ##.#*
 ##*~
-

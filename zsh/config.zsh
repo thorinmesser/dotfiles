@@ -1,9 +1,11 @@
-if [[ -n $SSH_CONNECTION ]]; then
-  export PS1='%m:%3~$(git_info_for_prompt)%# '
-else
-  export PS1='%3~$(git_info_for_prompt)%# '
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export PS1='%m:%3~$(git_info_for_prompt)%# '
+# else
+#   export PS1='%3~$(git_info_for_prompt)%# '
+# fi
 
+# export PROMPT="\$(git-radar --zsh --fetch)
+ # > "
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
@@ -54,7 +56,17 @@ bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
 setopt hist_ignore_all_dups
 
-# Use less as the default pager, and -X to stop clearing on exit in 
-# an xterm i.e. makes it nice for GNUplot help! The -M gives more 
+# Use less as the default pager, and -X to stop clearing on exit in
+# an xterm i.e. makes it nice for GNUplot help! The -M gives more
 # verbose info.
 PAGER='less -X -M'
+
+# Set architecture flags
+export ARCHFLAGS="-arch x86_64"
+
+
+# Git ssh stuff for VML bitbucket
+export GIT_SSH_COMMAND="ssh -i ~/.ssh/bitbucket_rsa"
+
+PATH=$PATH:/usr/local/aem/crx-quickstart/opt/filevault/vault-cli-3.1.16/bin
+export PATH
