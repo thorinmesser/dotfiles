@@ -2,17 +2,23 @@
 # # cheers, @ehrenmurdick
 # # http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
 
+# if (( $+commands[git] ))
+# then
+#   git="$commands[git]"
+# else
+#   git="/usr/bin/git"
+# fi
+# 
 # git_branch() {
-#   echo $(/usr/bin/git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+#   echo $($git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
 # }
-
+# 
 # git_dirty() {
-#   st=$(/usr/bin/git status 2>/dev/null | tail -n 1)
-#   if [[ $st == "" ]]
+#   if $(! $git status -s &> /dev/null)
 #   then
 #     echo ""
 #   else
-#     if [[ $st == "nothing to commit (working directory clean)" ]]
+#     if [[ $($git status --porcelain) == "" ]]
 #     then
 #       echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
 #     else
@@ -20,61 +26,44 @@
 #     fi
 #   fi
 # }
-
+# 
 # git_prompt_info () {
-#  ref=$(/usr/bin/git symbolic-ref HEAD 2>/dev/null) || return
+#  ref=$($git symbolic-ref HEAD 2>/dev/null) || return
 # # echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
 #  echo "${ref#refs/heads/}"
 # }
-
-# unpushed () {
-#   /usr/bin/git cherry -v @{upstream} 2>/dev/null
-# }
-
+# 
+# # This assumes that you always have an origin named `origin`, and that you only
+# # care about one specific origin. If this is not the case, you might want to use
+# # `$git cherry -v @{upstream}` instead.
 # need_push () {
-#   if [[ $(unpushed) == "" ]]
+#   if [ $($git rev-parse --is-inside-work-tree 2>/dev/null) ]
 #   then
-#     echo " "
-#   else
-#     echo " with %{$fg_bold[magenta]%}unpushed%{$reset_color%} "
-#   fi
-# }
-
-# rb_prompt(){
-#   if $(which rbenv &> /dev/null)
-#   then
-# 	  echo "%{$fg_bold[yellow]%}$(rbenv version | awk '{print $1}')%{$reset_color%}"
-# 	else
-# 	  echo ""
-#   fi
-# }
-
-# # This keeps the number of todos always available the right hand side of my
-# # command line. I filter it to only count those tagged as "+next", so it's more
-# # of a motivation to clear out the list.
-# todo(){
-#   if $(which todo.sh &> /dev/null)
-#   then
-#     num=$(echo $(todo.sh ls +next | wc -l))
-#     let todos=num-2
-#     if [ $todos != 0 ]
+#     number=$($git cherry -v origin/$(git symbolic-ref --short HEAD) 2>/dev/null | wc -l | bc)
+# 
+#     if [[ $number == 0 ]]
 #     then
-#       echo "$todos"
+#       echo " "
 #     else
-#       echo ""
+#       echo " with %{$fg_bold[magenta]%}$number unpushed%{$reset_color%}"
 #     fi
-#   else
-#     echo ""
 #   fi
 # }
-
-# directory_name(){
+# 
+# directory_name() {
 #   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 # }
-
-# export PROMPT=$'\n$(rb_prompt) in $(directory_name) $(git_dirty)$(need_push)\n› '
+# 
+# battery_status() {
+#   if [[ $(sysctl -n hw.model) == *"Book"* ]]
+#   then
+#     $ZSH/bin/battery-status
+#   fi
+# }
+# 
+# export PROMPT=$'\n$(battery_status)in $(directory_name) $(git_dirty)$(need_push)\n› '
 # set_prompt () {
-#   export RPROMPT="%{$fg_bold[cyan]%}$(todo)%{$reset_color%}"
+#   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
 # }
 
 # precmd() {

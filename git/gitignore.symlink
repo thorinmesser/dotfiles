@@ -69,3 +69,5 @@ CVS
 # Some editors use some special backup file formats.  Ignore them:
 ##.#*
 ##*~
+*~
+*.swp

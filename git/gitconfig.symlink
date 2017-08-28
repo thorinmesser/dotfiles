@@ -6,6 +6,11 @@
 [user]
     name = Thorin Messer
 	email = thorin.messer@vml.com
+# Local/private config goes in the include
+[include]
+        path = ~/.gitconfig.local
+[hub]
+        protocol = https
 [color]
     diff = auto
     status = auto
@@ -29,23 +34,24 @@
     token = 43d1f0209cb75b12d49295fc35b01d44
 [log]
     date = local
-[merge]
-	tool = p4mergetool
+#[merge]
+#	tool = p4mergetool
 [push]
     default = simple
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
-[mergetool "p4mergetool"]
-	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
-	trustExitCode = false
+#[mergetool "p4mergetool"]
+#	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
+#	trustExitCode = false
 [mergetool]
 	keepBackup = false
     prompt = false
 [diff]
-	tool = p4mergetool
-[difftool "p4mergetool"]
-	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
+    prompt = false
+#	tool = p4mergetool
+#[difftool "p4mergetool"]
+#	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
@@ -60,3 +66,11 @@
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+[help]
+        autocorrect = 1
+[push]
+        # See `git help config` (search for push.default)
+        # for more information on different options of the below setting.
+        #
+        # Setting to git 2.0 default to suppress warning message
+        default = simple

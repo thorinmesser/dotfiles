@@ -1,4 +1,4 @@
-set noswapfile
+syntax on
 
 " ----------------------------------------------------------------------------
 "  Text Formatting
@@ -101,3 +101,5 @@ compiler ruby
 
 "execute pathogen#infect()
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+" Wrap gitcommit file types at the appropriate length
+filetype indent plugin on
