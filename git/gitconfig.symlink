@@ -1,7 +1,6 @@
 [core]
-	excludesfile = /Users/jmesser/.gitignore
-	pager = diff-so-fancy | less --tabs=4 -RFX
-#	editor = atom --wait
+	excludesfile = ~/.gitignore
+	editor = atom --wait
 
 [user]
     name = Thorin Messer
