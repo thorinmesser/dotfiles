@@ -1,6 +1,6 @@
 [core]
 	excludesfile = ~/.gitignore
-	editor = atom --wait
+	editor = vi
 
 [user]
     name = Thorin Messer
@@ -19,6 +19,7 @@
     co = checkout
     cm = commit
     br = branch
+    a  = branch -a
     df = difftool
     mg = mergetool
     tree = log --decorate --oneline --all --graph
@@ -28,6 +29,11 @@
     alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
     p = fetch --prune
     pod = pull origin develop
+    deleted = log --diff-filter=D --summary
+    crop = branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -D
+    current = rev-parse --abbrev-ref HEAD
+    inspect = "!f() { CURRENT=$(git current) && git fetch && git log ${1---name-status} $CURRENT..origin/$CURRENT; }; f"
+	conflicts = diff --name-only --diff-filter=U
 [github]
     user = thorinmesser
     token = 43d1f0209cb75b12d49295fc35b01d44
@@ -48,6 +54,7 @@
     prompt = false
 [diff]
     prompt = false
+	tool = p4mergetool
 #	tool = p4mergetool
 #[difftool "p4mergetool"]
 #	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
@@ -73,3 +80,12 @@
         #
         # Setting to git 2.0 default to suppress warning message
         default = simple
+[fetch]
+	prune = true
+[merge]
+	tool = opendiff
+[mergetool "p4mergetool"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
+	trustExitCode = false
+[difftool "p4mergetool"]
+	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE

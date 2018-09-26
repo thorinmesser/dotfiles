@@ -2,7 +2,7 @@
 export ZSH=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/Code
+export PROJECTS=~/code
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
@@ -33,9 +33,9 @@ autoload -U compinit
 compinit
 
 # prompt
-autoload -Uz promptinit
-promptinit
-prompt pure
+#autoload -Uz promptinit
+#promptinit
+#prompt pure
 
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}

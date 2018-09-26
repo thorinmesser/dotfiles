@@ -1,17 +1,18 @@
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export PS1='%m:%3~$(git_info_for_prompt)%# '
-# else
-#   export PS1='%3~$(git_info_for_prompt)%# '
-# fi
-
-# export PROMPT="\$(git-radar --zsh --fetch)
- # > "
-export LSCOLORS="exfxcxdxbxegedabagacad"
-export CLICOLOR=true
-
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
+
+# for hyperzsh prompt in case I accidentally nuke it
+# The prompt
+#PROMPT='
+#$(_user_host)$(_python_venv)%{$fg[white]%}%~ $(git_prompt_info)%{$reset_color%}$(git_prompt_status)${_return_status}'
+#PROMPT+='
+#%(?.%F{white}.%F{red})❯%f '
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[white]%}⌀ "
+ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[blue]%}▲ "
+ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg[blue]%}➜ "
+ZSH_THEME_GIT_PROMPT_STASHED="%{$fg[yellow]○ "
+
 
 setopt NO_BG_NICE # don't nice background tasks
 setopt NO_HUP
@@ -61,5 +62,5 @@ export ARCHFLAGS="-arch x86_64"
 # Git ssh stuff for VML bitbucket
 export GIT_SSH_COMMAND="ssh -i ~/.ssh/bitbucket_rsa"
 
-PATH=$PATH:/usr/local/aem/crx-quickstart/opt/filevault/vault-cli-3.1.16/bin
+PATH=$PATH:~/Library/Python/2.7/bin
 export PATH

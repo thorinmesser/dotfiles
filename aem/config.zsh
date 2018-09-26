@@ -1,2 +1,2 @@
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home
-export PATH=$PATH:/usr/local/maven/bin
+export JAVA_HOME=$(/usr/libexec/java_home)
+export PATH=$PATH:/usr/local/maven/bin:/usr/local/vault-cli-3.1.16/bin
