@@ -64,3 +64,7 @@ export GIT_SSH_COMMAND="ssh -i ~/.ssh/bitbucket_rsa"
 
 PATH=$PATH:~/Library/Python/2.7/bin
 export PATH
+
+
+# QMK
+export QMK_HOME=/usr/local/src

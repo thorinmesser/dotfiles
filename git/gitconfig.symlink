@@ -3,8 +3,8 @@
 	editor = vi
 
 [user]
-    name = Thorin Messer
-	email = thorin.messer@vml.com
+	name = Thorin Messer
+	email = thorin.messer@vmlyr.com
 # Local/private config goes in the include
 [include]
         path = ~/.gitconfig.local
@@ -59,14 +59,12 @@
 #[difftool "p4mergetool"]
 #	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 [pull]
 	rebase = true
-[credential]
-[credential]
-	helper = !/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /usr/local/bin/git-credential-manager-1.5.0.jar
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
@@ -89,3 +87,11 @@
 	trustExitCode = false
 [difftool "p4mergetool"]
 	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
+#[credential]
+#	helper = !/Users/jmesser/.asdf/installs/java/openjdk-11.0.1/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /usr/local/Cellar/git-credential-manager/2.0.4/libexec/git-credential-manager-2.0.4.jar
+[credential]
+	helper = !/usr/bin/java -Ddebug=false -Djava.net.useSystemProxies=true -jar /usr/local/Cellar/git-credential-manager/2.0.4/libexec/git-credential-manager-2.0.4.jar
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager-core
+[credential "https://dev.azure.com"]
+	useHttpPath = true
