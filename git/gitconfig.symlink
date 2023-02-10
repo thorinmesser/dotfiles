@@ -4,7 +4,7 @@
 
 [user]
 	name = Thorin Messer
-	email = thorin.messer@vmlyr.com
+	email = github@thorinmesser.com
 # Local/private config goes in the include
 [include]
         path = ~/.gitconfig.local
@@ -58,11 +58,6 @@
 #	tool = p4mergetool
 #[difftool "p4mergetool"]
 #	cmd = /Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	required = true
-	process = git-lfs filter-process
 [pull]
 	rebase = true
 [color "diff-highlight"]

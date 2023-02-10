@@ -1,4 +1,9 @@
-autoload -Uz compinit && compinit
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+  autoload -Uz compinit
+  compinit
+fi
+
+. $(brew --prefix asdf)/libexec/asdf.sh
