@@ -1,3 +1,3 @@
-alias all='ls -alhG'
+alias all='ls -alh'
 alias lss='ls -CGF'
-alias ls='ls -lhG --color=auto'
+alias ls='ls -lh --color=auto'
